@@ -47,5 +47,28 @@ class AlunoDAO:
                 lista_alunos.append(aluno)
 
             return lista_alunos
+    
+    def atualizar(self, aluno):
+        with self._conectar() as conexao:
+            cursor = conexao.cursor()
+            cursor.execute(
+                '''
+                UPDATE alunos
+                SET nome =?, idade =?, curso = ?
+                WHERE id = ?
+                ''', (aluno.nome, aluno.idade, aluno.curso, aluno.id_aluno)
+            )
+            conexao.commit()
+            print(f"[OK] Aluno(a) '{aluno.nome}' atualizado com  sucesso")
+
+        
+    def deletar(self, id_aluno):
+        with self._conectar() as conexao:
+            cursor = conexao.cursor()
+            cursor.execute('DELETE FROM alunos WHERE id = ?', (id_aluno,))#A virgurla depois de id_aluno é necessária para indicar que é uma tupla de um único elemento
+            conexao.commit()
+            print(f"[OK] Aluno(a) com id '{id_aluno}' deletado com  sucesso")
+    
+
 
 
