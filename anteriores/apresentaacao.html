@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origem e Evolução da IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN CORE */
+        * { box-sizing: border-box; }
+        body { background-color: #020617; margin: 0; padding: 20px 0; display: grid; gap: 40px; grid-template-columns: 1fr; place-items: center; min-height: 100vh; }
+        
+        .slide-container {
+            width: 1280px; height: 720px; background-color: #0f172a; border-radius: 12px; overflow: hidden;
+            position: relative; display: flex; flex-direction: column; padding: 60px;
+            font-family: 'Inter', sans-serif; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        /* DECORAÇÃO DE FUNDO */
+        .slide-container::before {
+            content: ''; position: absolute; top: -10%; right: -5%; width: 40%; height: 60%;
+            background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
+            z-index: 0; border-radius: 50%; filter: blur(60px);
+        }
+
+        .slide-container::after {
+            content: ''; position: absolute; bottom: 50px; left: 30px; right: 30px; height: 1px;
+            background: rgba(245, 245, 245, 0.1); z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* TIPOGRAFIA */
+        h1 { font-family: 'Urbanist', sans-serif; font-size: 80px; font-weight: 700; margin: 0; color: #f8fafc; line-height: 1.1; }
+        h1 span { color: #2dd4bf; }
+        .slide-title { font-family: 'Urbanist', sans-serif; font-size: 52px; font-weight: 700; margin-bottom: 40px; color: #2dd4bf; text-align: left; width: 100%; }
+        p, li { color: #cbd5e1; font-size: 22px; line-height: 1.5; }
+        .subtitle { color: #94a3b8; font-size: 28px; margin-top: 20px; }
+
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+
+        /* LAYOUTS */
+        .title-layout { text-align: center; justify-content: center; height: 100%; }
+        .bullet-list { list-style: none; padding: 0; }
+        .bullet-list li { margin-bottom: 25px; padding-left: 45px; position: relative; }
+        .bullet-list i { position: absolute; left: 0; top: 5px; color: #2dd4bf; font-size: 28px; }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%; align-items: center; }
+        .image-wrapper { width: 100%; height: 400px; border-radius: 20px; overflow: hidden; border: 1px solid #2dd4bf; background: #1e293b; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+
+        /* Timeline specific */
+        .timeline-layout { display: flex; justify-content: space-between; position: relative; padding-top: 100px; width: 100%; }
+        .timeline-line { position: absolute; top: 150px; left: 0; right: 0; height: 4px; background: #334155; }
+        .timeline-item { width: 18%; text-align: center; position: relative; }
+        .timeline-item::after { content: ''; width: 20px; height: 20px; background: #2dd4bf; border-radius: 50%; position: absolute; top: 41px; left: 50%; transform: translateX(-50%); }
+        .timeline-item h3 { color: #2dd4bf; font-size: 24px; margin-bottom: 50px; font-family: 'Urbanist'; }
+
+        /* Tiles */
+        .tiled-content { display: flex; gap: 30px; width: 100%; }
+        .tile { flex: 1; background: #1e293b; padding: 30px; border-radius: 20px; border-left: 4px solid #2dd4bf; }
+        .tile h3 { color: #f8fafc; font-family: 'Urbanist'; margin-top: 0; margin-bottom: 15px; }
+
+        /* Bleed layout */
+        .bleed-image-layout { display: grid; grid-template-columns: 1fr 1fr; padding: 0; background: #0f172a; }
+        .bleed-text-side { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-image-side { height: 720px; width: 100%; object-fit: cover; }
+    </style>
+    <script>
+        // Função para lidar com imagens que falham ao carregar
+        function handleImageError(img) {
+            img.onerror = null; // Previne loop infinito
+            img.src = "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1280&auto=format&fit=crop"; 
+            img.alt = "Imagem tecnológica de substituição";
+        }
+    </script>
+</head>
+<body>
+
+<!-- Slide 1: Título -->
+<div class="slide-container">
+    <div class="title-layout">
+        <p class="subtitle" style="text-transform: uppercase; letter-spacing: 5px;">Aula 5</p>
+        <h1>Origem e Evolução <span>da IA</span></h1>
+        <p class="subtitle">Uma jornada de décadas, do sonho matemático à realidade generativa.</p>
+    </div>
+</div>
+
+<!-- Slide 2: Objetivos -->
+<div class="slide-container">
+    <h2 class="slide-title">Objetivos da Aula</h2>
+    <div class="content-area">
+        <ul class="bullet-list">
+            <li><i class="fa-solid fa-clock-rotate-left"></i> <strong>História Profunda:</strong> Descobrir que a IA nasceu muito antes do ChatGPT.</li>
+            <li><i class="fa-solid fa-microchip"></i> <strong>Evolução Tecnológica:</strong> Entender a relação entre hardware e algoritmos.</li>
+            <li><i class="fa-solid fa-snowflake"></i> <strong>Invernos e Verões:</strong> Analisar por que a IA parou e voltou a crescer várias vezes.</li>
+            <li><i class="fa-solid fa-users"></i> <strong>Atividade em Grupo:</strong> Construir uma linha do tempo colaborativa.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 3: Alan Turing -->
+<div class="slide-container">
+    <h2 class="slide-title">1950: Alan Turing</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>O matemático britânico <strong>Alan Turing</strong> estabeleceu os fundamentos da computação moderna.</p>
+                <ul class="bullet-list" style="margin-top: 30px;">
+                    <li><strong>Pergunta icónica:</strong> "Podem as máquinas pensar?"</li>
+                    <li><strong>Teste de Turing:</strong> Uma proposta para verificar se uma máquina pode simular o comportamento humano.</li>
+                    <li>Introduziu a ideia de que a inteligência poderia ser processada via <strong>algoritmos</strong>.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" 
+                     alt="Representação de circuitos e lógica" 
+                     onerror="handleImageError(this)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Dartmouth 1956 -->
+<div class="slide-container bleed-image-layout">
+    <div class="bleed-text-side">
+        <h2 class="slide-title">1956: O Nascimento do Termo</h2>
+        <p>Na Conferência de Dartmouth, cientistas como John McCarthy definiram o campo.</p>
+        <p style="margin-top: 20px;">Foi aqui que o termo <strong>"Inteligência Artificial"</strong> foi oficialmente criado, prevendo que máquinas poderiam resolver problemas complexos em breve.</p>
+    </div>
+    <img class="bleed-image-side" 
+         src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" 
+         alt="Painel de controle tecnológico clássico" 
+         onerror="handleImageError(this)">
+</div>
+
+<!-- Slide 5: O Inverno da IA -->
+<div class="slide-container">
+    <h2 class="slide-title">O Porquê dos "Invernos" da IA</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="border-left-color: #3b82f6;">
+                <h3>Falta de Hardware</h3>
+                <p>Os computadores dos anos 70 eram lentos e caros. Processar dados simples demorava semanas.</p>
+            </div>
+            <div class="tile" style="border-left-color: #ef4444;">
+                <h3>Expectativas Irreais</h3>
+                <p>Promessas de máquinas super-inteligentes em 10 anos não se cumpriram, causando cortes de verbas.</p>
+            </div>
+            <div class="tile" style="border-left-color: #f59e0b;">
+                <h3>Dados Limitados</h3>
+                <p>Sem internet, não havia informação suficiente para ensinar os algoritmos de forma eficaz.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Sistemas Especialistas (Anos 80) -->
+<div class="slide-container">
+    <h2 class="slide-title">Anos 80: Sistemas Especialistas</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?q=80&w=800&auto=format&fit=crop" 
+                     alt="Computador antigo retro" 
+                     onerror="handleImageError(this)">
+            </div>
+            <div>
+                <p>A IA focou em <strong>regras rígidas</strong> desenhadas por humanos.</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>Lógica Deductiva:</strong> Sistemas que resolviam problemas médicos ou financeiros específicos.</li>
+                    <li>Utilizavam árvores de decisão gigantescas ("Se isto, então aquilo").</li>
+                    <li><strong>Problema:</strong> Não conseguiam aprender sozinhos com novos dados.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Deep Blue vs Kasparov -->
+<div class="slide-container">
+    <h2 class="slide-title">1997: O Marco do Xadrez</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>O supercomputador <strong>Deep Blue</strong> da IBM venceu o campeão mundial Garry Kasparov.</p>
+                <ul class="bullet-list" style="margin-top: 30px;">
+                    <li>Demonstrou que a potência de cálculo bruta poderia superar o génio humano em jogos lógicos.</li>
+                    <li>Calculava 200 milhões de posições por segundo.</li>
+                    <li>Foi um marco mediático que trouxe a IA de volta às luzes da ribalta.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1529692236671-f1f6e9460272?q=80&w=800&auto=format&fit=crop" 
+                     alt="Tabuleiro de xadrez" 
+                     onerror="handleImageError(this)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: O Triunfo dos Dados (2010+) -->
+<div class="slide-container">
+    <h2 class="slide-title">2010+: O Combustível Moderno</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 30px;">Três pilares permitiram a revolução atual:</p>
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-database" style="font-size: 40px; color: #2dd4bf; margin-bottom: 20px;"></i>
+                <h3>Big Data</h3>
+                <p>O volume de dados da internet serviu de manual escolar para as máquinas.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-bolt" style="font-size: 40px; color: #2dd4bf; margin-bottom: 20px;"></i>
+                <h3>GPUs Rápidas</h3>
+                <p>Processadores gráficos permitiram treinar redes neurais em dias em vez de anos.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-brain" style="font-size: 40px; color: #2dd4bf; margin-bottom: 20px;"></i>
+                <h3>Redes Neurais</h3>
+                <p>Modelos matemáticos inspirados nas ligações biológicas do cérebro.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: AlphaGo (2016) -->
+<div class="slide-container bleed-image-layout">
+    <img class="bleed-image-side" 
+         src="https://images.unsplash.com/photo-1589115794121-692518e98031?q=80&w=800&auto=format&fit=crop" 
+         alt="Jogo de tabuleiro Go" 
+         onerror="handleImageError(this)">
+    <div class="bleed-text-side">
+        <h2 class="slide-title">2016: AlphaGo</h2>
+        <p>Vencer no jogo <strong>Go</strong> exigia mais do que cálculo: exigia "intuição".</p>
+        <p style="margin-top: 20px;">O sistema da Google venceu o campeão mundial Lee Sedol, provando que a IA podia aprender padrões criativos e imprevisíveis.</p>
+        <p style="font-weight: bold; color: #2dd4bf; margin-top: 10px;">A era da inteligência profunda começou aqui.</p>
+    </div>
+</div>
+
+<!-- Slide 10: IA Generativa (2022+) -->
+<div class="slide-container">
+    <h2 class="slide-title">2022+: A Revolução Generativa</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>A IA passou de apenas "classificar" para "criar".</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>LLMs (ChatGPT):</strong> Modelos que dominam a linguagem humana.</li>
+                    <li><strong>Criação Visual:</strong> Ferramentas que geram imagens e vídeos a partir de descrições.</li>
+                    <li>A tecnologia tornou-se uma ferramenta de co-criação diária.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" 
+                     alt="Arte digital gerada por IA" 
+                     onerror="handleImageError(this)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Linha do Tempo -->
+<div class="slide-container">
+    <h2 class="slide-title">Resumo da Jornada</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item"><h3>1950</h3><p>Turing e a lógica.</p></div>
+            <div class="timeline-item"><h3>1956</h3><p>Termo "IA" nasce.</p></div>
+            <div class="timeline-item"><h3>1997</h3><p>Deep Blue vence.</p></div>
+            <div class="timeline-item"><h3>2016</h3><p>AlphaGo e intuição.</p></div>
+            <div class="timeline-item"><h3>2024</h3><p>IA Generativa.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Atividade -->
+<div class="slide-container">
+    <div class="title-layout">
+        <h2 style="font-size: 70px; font-family: 'Urbanist'; color: #2dd4bf;">Trabalho de Grupo</h2>
+        <p class="subtitle" style="font-size: 32px;">Linha do Tempo Colaborativa</p>
+        <div class="tile" style="max-width: 800px; margin: 40px auto; text-align: left;">
+            <ol style="color: #cbd5e1; font-size: 22px; line-height: 2;">
+                <li>Usem os cartões de eventos distribuídos.</li>
+                <li>Criem uma cronologia visual no vosso espaço.</li>
+                <li>Expliquem como um evento do passado permitiu a tecnologia que usam hoje no telemóvel.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
