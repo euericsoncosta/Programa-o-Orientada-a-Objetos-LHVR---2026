@@ -44,8 +44,8 @@ def main():
             nome = input("Digite o novo nome do aluno: ")
             idade = int(input("Digite a nova idade do aluno: "))
             curso = input("Digite o novo curso do aluno: ")
-            aluno = Aluno(nome, idade, curso, id_aluno)
-            alunos.atualizar(aluno)
+            aluno_atualizado = Aluno(nome, idade, curso, id_aluno)
+            alunos.atualizar(aluno_atualizado)
 
         elif opcao == 4:
             id_aluno = int(input("Digite o ID do aluno a ser deletado: "))
